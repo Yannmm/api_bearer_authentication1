@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  token: MyText
-  active: false
+# one:
+#   user: 1
+#   token: MyText
+#   active: false
 
-two:
-  user: two
-  token: MyText
-  active: false
+# two:
+#   user: two
+#   token: MyText
+#   active: false

@@ -1,6 +1,6 @@
 class ApiToken < ApplicationRecord
   belongs_to :user
-  validates :token, presence: true, uniqueness: true
+  validates :token, presence: true
   before_validation :generate_token, on: :create
 
   encrypts :token, deterministic: true
