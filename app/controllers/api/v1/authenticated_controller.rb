@@ -2,12 +2,12 @@ class Api::V1::AuthenticatedController < ActionController::Base
     before_action :authenticate
 
     attr_reader :current_api_token, :current_user
-    
+
+    private 
+
     def authenticate
         authenticate_user_with_token || handle_bad_authentication
     end
-
-    private 
 
     def authenticate_user_with_token 
         authenticate_with_http_token do |token, options|
