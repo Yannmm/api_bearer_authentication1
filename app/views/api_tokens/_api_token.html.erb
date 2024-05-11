@@ -1,0 +1,8 @@
+<%= tag.div id: dom_id(api_token) do %>
+  <% if newly %>
+    <%= api_token.token %><br>
+  <% else %>
+    <%= api_token.token.truncate(10) %>(<%= api_token.active %>)<br>
+  <% end %>
+  <%= button_to 'Deactive', api_token_path(api_token), method: :patch if api_token.active && !newly %>
+<% end %>
