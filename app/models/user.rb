@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
 
   has_many :api_tokens, -> { order "created_at desc" }
+
+  has_many :posts
 end

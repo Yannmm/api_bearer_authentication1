@@ -1,4 +1,6 @@
 class Api::V1::AuthenticatedController < ActionController::Base
+    # FIXME: What is request forgery protection???
+    skip_forgery_protection
     before_action :authenticate
 
     attr_reader :current_api_token, :current_user
