@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
-  has_many :api_tokens
+  has_many :api_tokens, -> { order "created_at desc" }
 end
