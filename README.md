@@ -35,7 +35,7 @@ curl -X GET localhost:3000/api/v1/home/index.json -H "Authorization: Bearer 6e52
 
 curl -X GET localhost:3000/posts.json -H "Authorization: Bearer eab533196e3236e51a1964389f71b3ed"
 
-curl -X GET localhost:3000/api/v1/posts.json -H "Authorization: Bearer 6e526a209927276120bf17c01c503aaa"
+curl -X GET localhost:3000/api/v1/posts.json -H "Authorization: Bearer bf0ca3233347bbb38b93faf101d59690"
 
 curl -X DELETE -H "Content-Type: application/json"  "localhost:3000/users/sign_out"
 

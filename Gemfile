@@ -69,3 +69,8 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "pagy", "~> 8.4"
+
+gem 'rswag-api'
+gem 'rswag-ui'

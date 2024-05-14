@@ -1,12 +1,16 @@
 class Api::V1::PostsController < Api::V1::AuthenticatedController
-  # FIXME: Docs of rescue_from
+  include Pagy::Backend
+
+  # DONE: Docs of rescue_from
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
   def index
-    @posts = current_user.posts
+    # @posts = current_user.posts
+    user_posts = current_user.posts
+    @pagy, @posts = pagy(user_posts, items: 2)
   end
 
   # GET /posts/1 or /posts/1.json
