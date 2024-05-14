@@ -9,9 +9,9 @@ class Api::V1::PostsController < Api::V1::AuthenticatedController
 
   # GET /posts or /posts.json
   def index
-    # @posts = current_user.posts
-    user_posts = current_user.posts
-    @pagy, @posts = pagy(user_posts, items: 2)
+    @posts = current_user.posts
+    # user_posts = current_user.posts
+    # @pagy, @posts = pagy(user_posts, items: 2)
   end
 
   # GET /posts/1 or /posts/1.json

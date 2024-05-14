@@ -1,4 +1,6 @@
 class Api::V1::AuthenticatedController < ActionController::Base
+    skip_forgery_protection
+
     # DONE: What is request forgery protection???
     # Have a blog post regarding this topic
     before_action :authenticate

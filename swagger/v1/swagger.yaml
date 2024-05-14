@@ -4,7 +4,7 @@ info:
   description: API to manage user posts
   version: 1.0.0
 servers:
-  - url: https://api.example.com/v1
+  - url: http://localhost:3000/api/v1
 paths:
   /posts:
     post:
@@ -18,11 +18,11 @@ paths:
               properties:
                 title:
                   type: string
-                content:
+                body:
                   type: string
               required:
                 - title
-                - content
+                - body
       responses:
         '201':
           description: Created
@@ -34,7 +34,7 @@ paths:
                   id:
                     type: integer
       security:
-        - cookieAuth: []
+        - BearerAuth: []
     get:
       summary: Get a list of posts for the current logged-in user
       responses:
@@ -51,10 +51,10 @@ paths:
                       type: integer
                     title:
                       type: string
-                    content:
+                    body:
                       type: string
       security:
-        - cookieAuth: []
+        - BearerAuth: []
   /posts/{postId}:
     get:
       summary: Get a specific post by ID
@@ -76,10 +76,10 @@ paths:
                     type: integer
                   title:
                     type: string
-                  content:
+                  body:
                     type: string
       security:
-        - cookieAuth: []
+        - BearerAuth: []
     put:
       summary: Update a specific post by ID
       parameters:
@@ -97,13 +97,13 @@ paths:
               properties:
                 title:
                   type: string
-                content:
+                body:
                   type: string
       responses:
         '200':
           description: OK
       security:
-        - cookieAuth: []
+        - BearerAuth: []
     delete:
       summary: Delete a specific post by ID
       parameters:
@@ -116,10 +116,10 @@ paths:
         '204':
           description: No Content
       security:
-        - cookieAuth: []
+        - BearerAuth: []
 components:
   securitySchemes:
-    cookieAuth:
-      type: apiKey
-      in: cookie
-      name: session_token
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
