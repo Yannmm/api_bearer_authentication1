@@ -1,7 +1,8 @@
 class Api::V1::PostsController < Api::V1::AuthenticatedController
   include Pagy::Backend
 
-  # DONE: Docs of rescue_from
+  # Done: Docs of rescue_from
+  # Seems with this method wen can catch a specific kind of error type
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
   before_action :set_post, only: %i[ show edit update destroy ]
@@ -70,8 +71,10 @@ class Api::V1::PostsController < Api::V1::AuthenticatedController
       params.require(:post).permit(:title, :body)
     end
 
-    def handle_not_found
-      # FIXME: Http status :unauthorized
+    def handle_not_found(exception)
+      debugger
+      # DONE: Http status :unauthorized
+      # 401
       render json: { message: "Not found." }, status: :unauthorized
     end
 end
