@@ -30,15 +30,18 @@ class Api::V1::AuthenticatedController < ActionController::Base
     end
 
     def log_api_request
-        # FIXME: Seems the controller has access to current request, read the doc
+        # DONE: Seems the controller has access to current request, read the doc
+        # You can find the `request` doc here: https://apidock.com/rails/ActionController/Base/request
         current_user.api_requests.create!(path: request.path, method: request.method)
-        # FIXME: how to add response header fields?
+        # DONE: how to add response header fields?
+        # You can find the `request` doc here: https://apidock.com/rails/ActionController/Base/response
         response.headers['X-Rayman-Api-Call-Limit'] = "#{current_user.remaining_api_request_count}/#{User::MAX_API_REQUEST_PER_30_DAYS}"
     end
 
     def check_api_limit 
         if current_user.api_request_limit_exceeded? 
-            # FIXME: What is the status code of too_many_requests?
+            # DONE: What is the status code of too_many_requests?
+            # 429
             render json: { message: "Api limit exceeded." }, status: :too_many_requests
         end
     end

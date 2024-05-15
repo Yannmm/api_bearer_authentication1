@@ -10,11 +10,13 @@ class User < ApplicationRecord
 
   has_many :api_requests
 
-  # FIXME: how to define constants in ruby?
+  # DONE: how to define constants in ruby?
+  # Constant is available within the scope of current class and can be access unadorned.
   MAX_API_REQUEST_PER_30_DAYS = 50
 
   def api_request_count_within_last_30_days
-    # FIXME: I wonder what returns for the `ago` method
+    # DONE: I wonder what returns for the `ago` method
+    # `ago` returns `Time/Date` while `ago` return a `Duration`
     api_requests.where("created_at > ?", 30.days.ago).count
   end
 
